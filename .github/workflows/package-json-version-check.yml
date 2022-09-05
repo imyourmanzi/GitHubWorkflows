@@ -3,7 +3,7 @@ name: 'Check package.json Version'
 on:
   workflow_call:
     inputs:
-      package_path:
+      package:
         description: 'Path to the project's package.json that should be version bumped'
         type: string
         required: false
@@ -18,7 +18,7 @@ jobs:
       - name: Get branch package.json
         id: get_branch_version
         run: |
-          branchJsonShell="$(cat ${{ inputs.package_path }} | tr -d '\n')"
+          branchJsonShell="$(cat ${{ inputs.package }} | tr -d '\n')"
           echo "::set-output name=branchJson::${branchJsonShell}"
       - name: Checkout main branch
         uses: actions/checkout@v2
@@ -27,7 +27,7 @@ jobs:
       - name: Get main package.json
         id: get_main_version
         run: |
-          mainJsonShell="$(cat ${{ inputs.package_path }} | tr -d '\n')"
+          mainJsonShell="$(cat ${{ inputs.package }} | tr -d '\n')"
           echo "::set-output name=mainJson::${mainJsonShell}"
       - name: Compare branch and main package versions
         run: |
