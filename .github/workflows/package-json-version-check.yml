@@ -10,8 +10,9 @@ on:
         default: './package.json'
 
 jobs:
-  check_version:
+  check:
     runs-on: ubuntu-latest
+    name: 'Reusable Check Version'
     steps:
       - name: Checkout current branch
         uses: actions/checkout@v2
