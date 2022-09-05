@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       package:
-        description: 'Path to the project's package.json that should be version bumped'
+        description: "Path to the project's package.json that should be version bumped"
         type: string
         required: false
         default: './package.json'
