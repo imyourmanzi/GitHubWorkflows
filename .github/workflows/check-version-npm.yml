@@ -1,4 +1,4 @@
-name: 'Check package.json Version'
+name: 'Check Version'
 
 on:
   workflow_call:
@@ -10,19 +10,19 @@ on:
         default: './package.json'
 
 jobs:
-  check:
+  npm:
     runs-on: ubuntu-latest
-    name: 'Reusable Check Version'
+    name: 'npm Package'
     steps:
       - name: Checkout current branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Get branch package.json
         id: get_branch_version
         run: |
           branchJsonShell="$(cat ${{ inputs.package }} | tr -d '\n')"
           echo "::set-output name=branchJson::${branchJsonShell}"
       - name: Checkout main branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: main
       - name: Get main package.json
