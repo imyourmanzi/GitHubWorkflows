@@ -1,4 +1,4 @@
-name: 'Check Version'
+name: npm Package
 
 on:
   workflow_call:
@@ -10,9 +10,9 @@ on:
         default: './package.json'
 
 jobs:
-  npm:
+  version:
     runs-on: ubuntu-latest
-    name: 'npm Package'
+    name: Check Version
     steps:
       - name: Checkout current branch
         uses: actions/checkout@v3

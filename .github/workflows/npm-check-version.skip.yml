@@ -1,0 +1,11 @@
+name: npm Package
+
+on: workflow_call
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    name: Check Version
+    steps:
+      - name: No version bump required
+        run: exit 0
