@@ -20,7 +20,7 @@ jobs:
         id: get_branch_version
         run: |
           branchJsonShell="$(cat ${{ inputs.package }} | tr -d '\n')"
-          echo "::set-output name=branchJson::${branchJsonShell}"
+          echo "branchJson=${branchJsonShell}" >> "$GITHUB_OUTPUT"
       - name: Checkout main branch
         uses: actions/checkout@v3
         with:
@@ -29,7 +29,7 @@ jobs:
         id: get_main_version
         run: |
           mainJsonShell="$(cat ${{ inputs.package }} | tr -d '\n')"
-          echo "::set-output name=mainJson::${mainJsonShell}"
+          echo "mainJson=${mainJsonShell}" >> "$GITHUB_OUTPUT"
       - name: Compare branch and main package versions
         run: |
           branchVersion="${{fromJson(steps.get_branch_version.outputs.branchJson).version}}"
